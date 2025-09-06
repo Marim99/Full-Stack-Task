@@ -31,6 +31,7 @@ export default function LoginForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        data-test='email-input'
       />
       <input
         type="password"
@@ -39,9 +40,11 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        data-test='password-input'
       />
       <button
         type="submit"
+        data-test='login-button'
         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
       >
 

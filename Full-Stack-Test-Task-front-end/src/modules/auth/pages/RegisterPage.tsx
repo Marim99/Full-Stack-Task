@@ -21,6 +21,7 @@ export default function RegisterPage() {
           <Link
             to="/login"
             className="text-blue-600 hover:underline font-medium"
+            data-test='signIn-button'
           >
             {t("signIn")}
           </Link>

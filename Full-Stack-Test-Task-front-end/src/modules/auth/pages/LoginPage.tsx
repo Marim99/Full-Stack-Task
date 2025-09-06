@@ -20,6 +20,7 @@ export default function LoginPage() {
           <Link
             to="/register"
             className="text-blue-600 hover:underline font-medium"
+            data-test='signUp-button'
           >
             {t("loginForm.signUp")}
           </Link>
