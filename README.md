@@ -107,5 +107,3 @@ npm run dev
 
 
 
-https://github.com/user-attachments/assets/e64cb557-af8a-479e-90c7-f6607248146d
-
