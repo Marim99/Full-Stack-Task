@@ -12,18 +12,13 @@ export class UserService implements IUserService {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async findById(id: string): Promise<User | null> {
-    try {
+  async findById(id: string): Promise<User > {
       const user = await this.userRepository.getById(id);
       if (!user) {
         this.logger.warn(`User not found with id: ${id}`); 
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
       return user;
-    } catch (error) {
-      this.logger.error(`Error finding user by id: ${id}`, error.stack);
-      return null;
-    }
   }
 
 }

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './infrastructure/user.schema';
-import { UserRepositoryMongo } from './infrastructure/user.repository';
+import { UserRepository } from './infrastructure/user.repository';
 import  { IUserRepositoryToken } from './domain/user.repository.interface';
 import { UserController } from './web/user.controller';
 import { UserService } from './application/user.service';
@@ -13,7 +13,7 @@ import { UserService } from './application/user.service';
     UserService,
     {
       provide: IUserRepositoryToken,
-      useClass: UserRepositoryMongo,
+      useClass: UserRepository,
     },
   ],
   exports: [IUserRepositoryToken],

@@ -7,7 +7,7 @@ import { UserDocument } from './user.schema';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
-export class UserRepositoryMongo implements IUserRepository {
+export class UserRepository implements IUserRepository {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
   ) {}
