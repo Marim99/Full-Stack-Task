@@ -11,8 +11,5 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: '../coverage',
   coverageReporters: ['text', 'lcov', 'html'],
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-    '/test/',
-  ],
+  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
 };

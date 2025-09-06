@@ -38,7 +38,9 @@ describe('UserRepository', () => {
 
   describe('getByEmail', () => {
     it('should return user if found', async () => {
-      mockModel.findOne.mockReturnValue({ exec: jest.fn().mockResolvedValue(mockFoundUser) });
+      mockModel.findOne.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(mockFoundUser),
+      });
 
       const result = await repository.getByEmail('john@example.com');
 
@@ -47,7 +49,9 @@ describe('UserRepository', () => {
     });
 
     it('should return null if not found', async () => {
-      mockModel.findOne.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+      mockModel.findOne.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
+      });
 
       const result = await repository.getByEmail('unknown@example.com');
 
@@ -57,7 +61,9 @@ describe('UserRepository', () => {
 
   describe('getById', () => {
     it('should return user if found', async () => {
-      mockModel.findOne.mockReturnValue({ exec: jest.fn().mockResolvedValue(mockFoundUser) });
+      mockModel.findOne.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(mockFoundUser),
+      });
 
       const result = await repository.getById('1');
 
@@ -66,7 +72,9 @@ describe('UserRepository', () => {
     });
 
     it('should return null if not found', async () => {
-      mockModel.findOne.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+      mockModel.findOne.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
+      });
 
       const result = await repository.getById('2');
 

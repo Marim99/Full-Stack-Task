@@ -19,8 +19,8 @@ import { transports, format } from 'winston';
     }),
     MongooseModule.forRoot(
       process.env.MONGO_URI && process.env.DB_NAME
-      ? `${process.env.MONGO_URI}/${process.env.DB_NAME}`
-      : 'mongodb://127.0.0.1:27017/myapp',
+        ? `${process.env.MONGO_URI}/${process.env.DB_NAME}`
+        : 'mongodb://127.0.0.1:27017/myapp',
     ),
     UserModule,
     AuthModule,

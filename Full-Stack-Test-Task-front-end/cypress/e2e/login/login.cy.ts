@@ -1,18 +1,18 @@
-import { login } from "../../selectors/login.selectors";
+import { login } from '../../selectors/login.selectors';
 
-describe("Login Page", () => {
+describe('Login Page', () => {
   beforeEach(() => {
-    cy.visit("/login");
+    cy.visit('/login');
   });
 
-  it("should allow user to login", () => {
-    cy.get(login.emailInput).type("test@example.com");
-    cy.get(login.passwordInput).type("password123");
+  it('should allow user to login', () => {
+    cy.get(login.emailInput).type('test@example.com');
+    cy.get(login.passwordInput).type('password123');
     cy.get(login.loginButton).click();
   });
 
-  it("should navigate user to register if clicked on Sing Up option", () => {
+  it('should navigate user to register if clicked on Sing Up option', () => {
     cy.get(login.signUpButton).click();
-    cy.url().should("include", "/register");
+    cy.url().should('include', '/register');
   });
 });

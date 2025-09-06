@@ -17,9 +17,7 @@ describe('AuthController', () => {
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AuthController],
-      providers: [
-        { provide: AuthService, useValue: authServiceMock },
-      ],
+      providers: [{ provide: AuthService, useValue: authServiceMock }],
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
@@ -31,19 +29,33 @@ describe('AuthController', () => {
 
   describe('register', () => {
     it('should call AuthService.register and return user', async () => {
-      const dto: RegisterDto = { email: 'test@example.com', name: 'John', password: 'pass123' };
+      const dto: RegisterDto = {
+        email: 'test@example.com',
+        name: 'John',
+        password: 'pass123',
+      };
       const mockUser = { id: '1', email: dto.email, name: dto.name };
       authServiceMock.register.mockResolvedValue(mockUser);
 
       const result = await controller.register(dto);
 
-      expect(authServiceMock.register).toHaveBeenCalledWith(dto.email, dto.name, dto.password);
+      expect(authServiceMock.register).toHaveBeenCalledWith(
+        dto.email,
+        dto.name,
+        dto.password,
+      );
       expect(result).toEqual(mockUser);
     });
 
     it('should throw if AuthService.register throws', async () => {
-      const dto: RegisterDto = { email: 'test@example.com', name: 'John', password: 'pass123' };
-      authServiceMock.register.mockRejectedValue(new HttpException('Email exists', 400));
+      const dto: RegisterDto = {
+        email: 'test@example.com',
+        name: 'John',
+        password: 'pass123',
+      };
+      authServiceMock.register.mockRejectedValue(
+        new HttpException('Email exists', 400),
+      );
 
       await expect(controller.register(dto)).rejects.toThrow(HttpException);
     });
@@ -57,13 +69,18 @@ describe('AuthController', () => {
 
       const result = await controller.login(dto);
 
-      expect(authServiceMock.login).toHaveBeenCalledWith(dto.email, dto.password);
+      expect(authServiceMock.login).toHaveBeenCalledWith(
+        dto.email,
+        dto.password,
+      );
       expect(result).toEqual(mockToken);
     });
 
     it('should throw if AuthService.login throws', async () => {
       const dto: LoginDto = { email: 'test@example.com', password: 'pass123' };
-      authServiceMock.login.mockRejectedValue(new HttpException('Wrong password', 401));
+      authServiceMock.login.mockRejectedValue(
+        new HttpException('Wrong password', 401),
+      );
 
       await expect(controller.login(dto)).rejects.toThrow(HttpException);
     });

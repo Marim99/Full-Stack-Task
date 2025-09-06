@@ -1,4 +1,10 @@
-import { Injectable, HttpException, HttpStatus, Inject,Logger } from '@nestjs/common';
+import {
+  Injectable,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Logger,
+} from '@nestjs/common';
 import { IAuthService } from '../domain/auth.service.interface';
 import type { IUserRepository } from '../../users/domain/user.repository.interface';
 import { IUserRepositoryToken } from '../../users/domain/user.repository.interface';
@@ -8,17 +14,21 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService implements IAuthService {
-    private readonly logger = new Logger(AuthService.name);
+  private readonly logger = new Logger(AuthService.name);
   constructor(
     @Inject(IUserRepositoryToken)
-    private readonly userRepository: IUserRepository,private readonly jwtService: JwtService,
+    private readonly userRepository: IUserRepository,
+    private readonly jwtService: JwtService,
   ) {}
 
   async register(email: string, name: string, password: string): Promise<User> {
     const existingUser = await this.userRepository.getByEmail(email);
     if (existingUser) {
-      this.logger.warn(`Email already registered: ${email}`); 
-      throw new HttpException('Email already registered', HttpStatus.BAD_REQUEST);
+      this.logger.warn(`Email already registered: ${email}`);
+      throw new HttpException(
+        'Email already registered',
+        HttpStatus.BAD_REQUEST,
+      );
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -36,12 +46,15 @@ export class AuthService implements IAuthService {
   async login(email: string, password: string): Promise<{ token: string }> {
     const user = await this.userRepository.getByEmail(email);
     if (!user) {
-      this.logger.warn(`User does not exist: ${email}`); 
+      this.logger.warn(`User does not exist: ${email}`);
       throw new HttpException('User does not exist', HttpStatus.UNAUTHORIZED);
     }
-    const passwordMatches = await bcrypt.compare(password.trim(), user.password);
+    const passwordMatches = await bcrypt.compare(
+      password.trim(),
+      user.password,
+    );
     if (!passwordMatches) {
-      this.logger.warn(`User enter Wrong password: ${email}`); 
+      this.logger.warn(`User enter Wrong password: ${email}`);
       throw new HttpException('Wrong password', HttpStatus.UNAUTHORIZED);
     }
 

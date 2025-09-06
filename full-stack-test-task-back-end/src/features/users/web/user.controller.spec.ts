@@ -1,7 +1,7 @@
-import { Test } from "@nestjs/testing";
-import { UserController } from "./user.controller";
-import { UserService } from "../application/user.service";
-import { JwtAuthGuard } from "../guards/jwt-auth.guard";
+import { Test } from '@nestjs/testing';
+import { UserController } from './user.controller';
+import { UserService } from '../application/user.service';
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 
 describe('UserController', () => {
   let controller: UserController;
@@ -14,15 +14,13 @@ describe('UserController', () => {
 
     const module = await Test.createTestingModule({
       controllers: [UserController],
-      providers: [
-        { provide: UserService, useValue: userServiceMock },
-      ],
+      providers: [{ provide: UserService, useValue: userServiceMock }],
     })
-    .overrideGuard(JwtAuthGuard)
-    .useValue({
-      canActivate: () => true,
-    })
-    .compile();
+      .overrideGuard(JwtAuthGuard)
+      .useValue({
+        canActivate: () => true,
+      })
+      .compile();
 
     controller = module.get<UserController>(UserController);
   });

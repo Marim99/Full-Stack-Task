@@ -44,8 +44,8 @@ export class UserRepository implements IUserRepository {
     );
   }
 
-    async getById(id: string): Promise<User | null> {
-    const found = await this.userModel.findOne({ _id:id }).exec();
+  async getById(id: string): Promise<User | null> {
+    const found = await this.userModel.findOne({ _id: id }).exec();
     if (!found) return null;
 
     return new User(

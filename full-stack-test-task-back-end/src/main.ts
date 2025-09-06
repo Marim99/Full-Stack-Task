@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe} from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -8,9 +8,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = app.get(WINSTON_MODULE_NEST_PROVIDER);
   app.useLogger(logger);
-    app.useGlobalPipes(
+  app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,  
+      whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
     }),
@@ -19,16 +19,17 @@ async function bootstrap() {
     .setTitle('Auth API')
     .setDescription('Full-Stack Auth App API Documentation')
     .setVersion('1.0.0')
-    .addBearerAuth({
-      type: 'http',
-      scheme: 'bearer',
-      bearerFormat: 'JWT',
-      in: 'header',
-      name: 'Authorization',
-    },
-    'bearer'
-  )
-  .build();
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        in: 'header',
+        name: 'Authorization',
+      },
+      'bearer',
+    )
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);

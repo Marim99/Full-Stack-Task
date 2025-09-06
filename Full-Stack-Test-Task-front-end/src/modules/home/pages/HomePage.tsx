@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useAuth } from "@/hooks/useAuth";
-import { useTranslation } from "react-i18next";
+import { useEffect } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useTranslation } from 'react-i18next';
 
 export default function HomePage() {
   const { user, curentUser } = useAuth();
@@ -15,12 +15,12 @@ export default function HomePage() {
         {user ? (
           <>
             <h1 className="text-2xl font-bold text-gray-800">
-              {t("home.welcome")}, {user.name}
+              {t('home.welcome')}, {user.name}
             </h1>
             <p className="text-gray-600 mt-2">{user.email}</p>
           </>
         ) : (
-          <p className="text-gray-500">{t("home.loadingUser")}</p>
+          <p className="text-gray-500">{t('home.loadingUser')}</p>
         )}
       </div>
     </div>
