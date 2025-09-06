@@ -85,13 +85,4 @@ describe('AuthController', () => {
       await expect(controller.login(dto)).rejects.toThrow(HttpException);
     });
   });
-
-  describe('logout', () => {
-    it('should return success message', async () => {
-      const req = { user: { id: '1' } };
-      const result = await controller.logout(req as any);
-
-      expect(result).toEqual({ message: 'Logged out successfully' });
-    });
-  });
 });

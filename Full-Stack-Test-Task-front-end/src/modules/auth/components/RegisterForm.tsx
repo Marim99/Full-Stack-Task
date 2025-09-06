@@ -64,7 +64,7 @@ export default function RegisterForm() {
             </label>
             <input
               type="text"
-              className="mt-2 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 shadow-sm px-4 py-2 text-gray-900"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="John Doe"
@@ -95,7 +95,7 @@ export default function RegisterForm() {
             </label>
             <input
               type="password"
-              className="mt-2 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 shadow-sm px-4 py-2 text-gray-900"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="********"

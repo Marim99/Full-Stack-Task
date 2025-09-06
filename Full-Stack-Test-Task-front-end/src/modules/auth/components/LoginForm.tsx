@@ -13,7 +13,6 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
     try {
       await loginUser(email, password);
       navigate('/home');
@@ -27,7 +26,7 @@ export default function LoginForm() {
       <input
         type="email"
         placeholder="Email"
-        className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
+        className="w-full border rounded-lg px-3 py-2 text-black"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -36,7 +35,7 @@ export default function LoginForm() {
       <input
         type="password"
         placeholder="Password"
-        className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
+        className="w-full border rounded-lg px-3 py-2 text-black"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required

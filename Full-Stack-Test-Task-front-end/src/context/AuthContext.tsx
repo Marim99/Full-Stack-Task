@@ -60,6 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       setUser(null);
       localStorage.removeItem('token');
+      window.location.href = '/login';
     }
   };
   return (
