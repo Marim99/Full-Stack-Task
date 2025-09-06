@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ export default function RegisterForm() {
   const [errors, setErrors] = useState<string[]>([]);
   const { registerUser } = useAuth();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors([]);
@@ -43,7 +43,7 @@ export default function RegisterForm() {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-semibold text-gray-700">
-              Name
+              {t("register.name")}
             </label>
             <input
               type="text"
@@ -54,18 +54,16 @@ export default function RegisterForm() {
               required
             />
           </div>
-
-
-
+          
               <div className="mb-5">
-              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t("register.email")}</label>
               <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" onChange={(e) => setEmail(e.target.value)}  value={email}  required />
             </div>
 
 
           <div>
             <label className="block text-sm font-semibold text-gray-700">
-              Password
+              {t("register.password")}
             </label>
             <input
               type="password"
@@ -81,7 +79,7 @@ export default function RegisterForm() {
             type="submit"
             className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 active:bg-indigo-800 shadow-md transition-all"
           >
-            Register
+            {t("register.register")}
           </button>
         </form>
       </div>

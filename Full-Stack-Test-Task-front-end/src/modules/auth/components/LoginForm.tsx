@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function LoginForm() {
   const { loginUser } = useAuth();
@@ -8,7 +9,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -43,7 +44,8 @@ export default function LoginForm() {
         type="submit"
         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
       >
-        Sign In
+
+        {t("signIn")}
       </button>
               {error && (
           <div className="mb-4 rounded-lg bg-red-50 border border-red-300 text-red-700 p-3">

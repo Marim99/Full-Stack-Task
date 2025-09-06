@@ -1,0 +1,21 @@
+{
+  "login": "Login",
+  "logout": "Logout",
+  "signIn": "Sign In",
+  "home":{
+    "loadingUser": "Loading user...",
+    "welcome": "Welcome"
+  },
+  "register":{
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "register": "Register",
+    "createAccount": "Create an Account",
+    "haveAccount":"Already have an account?"
+  },
+  "loginForm": {
+    "haveAccount":"Don’t have an account?",
+    "signUp": "Sign up"
+  }
+}
