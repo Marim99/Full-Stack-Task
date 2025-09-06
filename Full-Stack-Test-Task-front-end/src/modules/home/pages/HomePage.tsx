@@ -26,7 +26,9 @@ export default function HomePage() {
             </div>
           </>
         ) : (
-          <p className="text-gray-500 text-lg animate-pulse">{t('home.loadingUser')}</p>
+          <p className="text-gray-500 text-lg animate-pulse">
+            {t('home.loadingUser')}
+          </p>
         )}
       </div>
     </div>
