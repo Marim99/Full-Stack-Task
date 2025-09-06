@@ -14,7 +14,7 @@ export default function HomePage() {
         {user ? (
           <>
             <h1 className="text-2xl font-bold text-gray-800">
-              Welcome, {user.name} 🎉
+              Welcome, {user.name}
             </h1>
             <p className="text-gray-600 mt-2">{user.email}</p>
           </>
