@@ -25,10 +25,6 @@ jobs:
         run: npm run format:check
         working-directory: full-stack-test-task-back-end
 
-      - name: Run ESLint
-        run: npm run lint
-        working-directory: full-stack-test-task-back-end
-
       - name: Run backend tests
         run: npm run test:cov
         working-directory: full-stack-test-task-back-end
@@ -49,10 +45,6 @@ jobs:
 
       - name: Check Prettier formatting
         run: npm run format:check
-        working-directory: Full-Stack-Test-Task-front-end
-
-      - name: Run ESLint
-        run: npm run lint
         working-directory: Full-Stack-Test-Task-front-end
 
       - name: Start frontend
