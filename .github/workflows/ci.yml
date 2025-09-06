@@ -39,6 +39,10 @@ jobs:
         run: npm install
         working-directory: Full-Stack-Test-Task-front-end
 
+      - name: Start frontend
+        run: npm run dev
+        working-directory: Full-Stack-Test-Task-front-end
+
       - name: Run Cypress tests
         run: npx cypress run
         working-directory: Full-Stack-Test-Task-front-end
